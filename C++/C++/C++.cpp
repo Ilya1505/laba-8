@@ -146,6 +146,10 @@ private:
 	double price;// цена
 	engine dvs;// двигатель
 public:
+	static int GetID()// статический метод, возвращающий значение статической переменной count
+	{
+		return count;
+	}
 	cars(string name, string color, int year, double price, engine dvs)// конструктор с параметрами
 	{
 		this->name = name;
