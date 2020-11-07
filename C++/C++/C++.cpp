@@ -214,6 +214,7 @@ public:
 	}
 	void OutputCars()// функкция вывода данных
 	{
+		cout << "ID машины: " << id << endl;
 		cout << endl << "Марка машины: " << name << endl;
 		cout << "Цвет машины: " << color << endl;
 		cout << "Год выпуска: " << year << endl;
@@ -338,6 +339,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	{
 		(avtoArray + i)->OutputCars();
 	}
+	cout << "Общее количество машин: " << cars::GetID() << endl;
 	delete[] avtoArray;
 	getch();
 	return 0;
