@@ -138,19 +138,18 @@ public:
 class cars// класс авто
 {
 private:
+	//static int count;
 	string name;// марка авто
 	string color;// цвет авто
 	int year;// год выпуска
-	int count;// количество авто
 	double price;// цена
 	engine dvs;// двигатель
 public:
-	cars(string name, string color, int year, int count, double price, engine dvs)// конструктор с параметрами
+	cars(string name, string color, int year, double price, engine dvs)// конструктор с параметрами
 	{
 		this->name = name;
 		this->color = color;
 		this->year = year;
-		this->count = count;
 		this->price = price;
 		this->dvs = dvs;//установка двигателя
 	}
@@ -159,15 +158,13 @@ public:
 		name = "no_name";
 		color = "no_color";
 		year = 2000;
-		count = 0;
 		price = 0;
 	}
-	void init(string name, string color, int year, int count, double price, engine dvs)// функция инициализация
+	void init(string name, string color, int year, double price, engine dvs)// функция инициализация
 	{
 		this->name = name;
 		this->color = color;
 		this->year = year;
-		this->count = count;
 		this->price = price;
 		this->dvs = dvs;//установка двигателя
 	}
@@ -183,10 +180,6 @@ public:
 	void SetYear(int year)
 	{
 		this->year = year;
-	}
-	void SetCount(int count)
-	{
-		this->count = count;
 	}
 	void SetPrice(double price)
 	{
@@ -204,10 +197,6 @@ public:
 	{
 		return year;
 	}
-	int GetCount()
-	{
-		return count;
-	}
 	double GetPrice()
 	{
 		return price;
@@ -217,7 +206,6 @@ public:
 		cout << endl << "Марка машины: " << name << endl;
 		cout << "Цвет машины: " << color << endl;
 		cout << "Год выпуска: " << year << endl;
-		cout << "Количество: " << count << endl;
 		cout << "Цена машины: ";
 		printf("%.4lf\n", price);
 		dvs.Print();
@@ -233,15 +221,9 @@ public:
 		getline(cin, color);
 		cout << "Год выпуска машины: ";
 		cin >> year;
-		cout << "Количество: ";
-		cin >> count;
 		cout << "Цена: ";
 		cin >> price;
 		dvs.Read();
-	}
-	void SellCars()// функция продажи авто
-	{
-		count--;
 	}
 	void Modern(double NewWeight, int NewPower, int NewResurs)// модернизация
 	{
@@ -276,7 +258,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	engine c = a + b;// перегрузка оператора +
 	++c;// перегрузка оператора ++ префикс
 	engine dvs = c++;// перегрузка оператора ++ постфикс 
-	cars avto("no_name", "no_color", 0, 0, 1000, dvs);
+	cars avto("no_name", "no_color", 2020, 1000, dvs);
 	avto.OutputCars();
 	avto.PutCars();
 	printf("\nДанные после ввода:");
@@ -287,13 +269,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	avto.Modern(100, 200, 500);
 	printf("\nПосле модернизации:");
 	avto.OutputCars();
-	avto.SellCars();
-	printf("\nПосле продажи:");
-	avto.OutputCars();
 	//Работа с динамическими переменными
 	printf("\nДинамическая переменная\n");
 	printf("Инициализация:\n");
-	cars* avto1 = new cars("no_name", "no_color", 0, 0, 100, dvs);
+	cars* avto1 = new cars("no_name", "no_color", 2020, 100, dvs);
 	avto1->OutputCars();
 	avto1->PutCars();
 	printf("\nДанные после ввода:\n");
@@ -303,9 +282,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	avto1->OutputCars();
 	avto1->Modern(100, 200, 500);
 	printf("После модернизации:\n");
-	avto1->OutputCars();
-	avto1->SellCars();
-	printf("После продажи \n");
 	avto1->OutputCars();
 	delete avto1;
 	//Работа с динамическим массивом через new
@@ -317,7 +293,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf("\nИнициализация:\n");
 	for (int i = 0; i < n; i++)
 	{
-		(avtoArray + i)->init("no_name", "no_color", 0, 0, 1000, dvs);
+		(avtoArray + i)->init("no_name", "no_color", 2020, 1000, dvs);
 	}
 	for (int i = 0; i < n; i++)
 	{
@@ -347,15 +323,6 @@ int _tmain(int argc, _TCHAR* argv[])
 		(avtoArray + i)->Modern(100, 200, 500);
 	}
 	printf("После модернизации:\n");
-	for (int i = 0; i < n; i++)
-	{
-		(avtoArray + i)->OutputCars();
-	}
-	for (int i = 0; i < n; i++)
-	{
-		(avtoArray + i)->SellCars();
-	}
-	printf("После продажи \n");
 	for (int i = 0; i < n; i++)
 	{
 		(avtoArray + i)->OutputCars();
