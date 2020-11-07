@@ -138,7 +138,7 @@ public:
 class cars// класс авто
 {
 private:
-	//static int count;
+	static int count;
 	string name;// марка авто
 	string color;// цвет авто
 	int year;// год выпуска
@@ -244,7 +244,7 @@ void Drive(cars *avto)// возврат значений через указатель
 	probeg = avto->dvs.GetProbeg() + 10;
 	avto->dvs.SetProbeg(probeg);
 }
-
+int cars::count = 0;
 int _tmain(int argc, _TCHAR* argv[])
 {
 	SetConsoleCP(1251);// подключение русскоязычного ввода/вывода
