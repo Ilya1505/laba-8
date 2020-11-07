@@ -214,8 +214,8 @@ public:
 	}
 	void OutputCars()// функкция вывода данных
 	{
-		cout << "ID машины: " << id << endl;
-		cout << endl << "Марка машины: " << name << endl;
+		cout << endl <<"ID машины: " << id << endl;
+		cout << "Марка машины: " << name << endl;
 		cout << "Цвет машины: " << color << endl;
 		cout << "Год выпуска: " << year << endl;
 		cout << "Цена машины: ";
