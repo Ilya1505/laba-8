@@ -162,7 +162,8 @@ class engine// двигатель
 };
 
 class cars// класс авто
-{
+{	
+	private static int count;
 	private String name=new String();// марка авто
 	private String color=new String();// цвет авто
 	private int year;// год выпуска
@@ -192,10 +193,6 @@ class cars// класс авто
 	public void SetYear(int year)
 	{
 		this.year = year;
-	}
-	public void SetCount(int count)
-	{
-		this.count = count;
 	}
 	public void SetPrice(double price)
 	{
