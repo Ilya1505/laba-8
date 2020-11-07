@@ -60,6 +60,7 @@ public class Main
 	{	System.out.println(System.lineSeparator());
 		arrayC[i].OutputCars();
 	}
+	System.out.println(System.lineSeparator()+"Общее количество машин: "+avto.GetCount());
 	}
 };
 
@@ -163,13 +164,17 @@ class engine// двигатель
 
 class cars// класс авто
 {	
-	private static int count;
+	private static int count;// статическая переменная, хранящая количество созданных объектов cars
+	int id;// уникальный номер для каждого объекта cars
 	private String name=new String();// марка авто
 	private String color=new String();// цвет авто
 	private int year;// год выпуска
 	private double price;// цена
 	private engine dvs = new engine();// двигатель
-
+	public static int GetCount()
+	{
+		return count;
+	}
 	public cars(String name, String color, int yr, double pr, engine dvs)// конструктор с параметрами
 	{
 		this.name=name;
@@ -177,6 +182,8 @@ class cars// класс авто
 		this.year = yr;
 		this.price = pr;
 		this.dvs = dvs;//установка двигателя
+		count++;
+		id=count;
 	}
 	public cars()// конструктор без параметров
 	{
@@ -184,6 +191,8 @@ class cars// класс авто
 		color="no_color";
 		year = 2000;
 		price = 0;
+		count++;
+		id = count;
 	}
 	// сеттеры и геттеры
 	public void SetName(String name)
@@ -229,6 +238,7 @@ class cars// класс авто
 	}
 	public void OutputCars()// функция вывода данных
 	{
+		System.out.println("ID машины: "+id);
 		System.out.println("Марка машины: " + name);
 		System.out.println("Цвет машины: " + color);
 		System.out.println("Год выпуска машины: " + year);
