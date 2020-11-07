@@ -138,7 +138,8 @@ public:
 class cars// класс авто
 {
 private:
-	static int count;
+	static int count;// статическая переменная, хранящая количество созданных объектов cars
+	int id;// уникальный номер для каждого объекта cars
 	string name;// марка авто
 	string color;// цвет авто
 	int year;// год выпуска
@@ -152,6 +153,8 @@ public:
 		this->year = year;
 		this->price = price;
 		this->dvs = dvs;//установка двигателя
+		count++;
+		id = count;
 	}
 	cars()// конструктор без параметров
 	{
@@ -159,6 +162,8 @@ public:
 		color = "no_color";
 		year = 2000;
 		price = 0;
+		count++;
+		id = count;
 	}
 	void init(string name, string color, int year, double price, engine dvs)// функция инициализация
 	{
@@ -167,6 +172,8 @@ public:
 		this->year = year;
 		this->price = price;
 		this->dvs = dvs;//установка двигателя
+		count++;
+		id = count;
 	}
 	// сеттеры и геттеры
 	void SetName(string name)
