@@ -165,13 +165,13 @@ class engine// двигатель
 class cars// класс авто
 {	
 	private static int count;// статическая переменная, хранящая количество созданных объектов cars
-	int id;// уникальный номер для каждого объекта cars
+	private int id;// уникальный номер для каждого объекта cars
 	private String name=new String();// марка авто
 	private String color=new String();// цвет авто
 	private int year;// год выпуска
 	private double price;// цена
 	private engine dvs = new engine();// двигатель
-	public static int GetCount()
+	public static int GetCount()// статический метод
 	{
 		return count;
 	}
@@ -206,6 +206,10 @@ class cars// класс авто
 	public void SetPrice(double price)
 	{
 		this.price = price;
+	}
+	public int GetID()
+	{
+		return id;
 	}
 	public String GetName()
 	{

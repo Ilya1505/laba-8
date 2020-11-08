@@ -16,7 +16,7 @@ namespace C_шарп
             engine dvs = new engine();
             dvs = one + two;// перегрузка оператора +
             dvs++;// перегрузка оператора ++
-            cars avto = new cars("no_name", "no_color", 0, 0, 1000, dvs);
+            cars avto = new cars("no_name", "no_color", 2020, 1000, dvs);
             avto.OutputCars();
             avto.PutCars();
             Console.WriteLine("\nДанные после ввода:");
@@ -28,29 +28,26 @@ namespace C_шарп
             avto.Modern(100, 200, 500);
             Console.WriteLine("\n\nПосле модернизации:");
             avto.OutputCars();
-            avto.SellCars();
-            Console.WriteLine("\nПосле продажи:");
-            avto.OutputCars();
             // объявление и инициализация массива автомобилей
             engine[] arrayE = new engine[2];
             cars[] arrayC = new cars[2];
             for (int i = 0; i < arrayC.Length; i++)
             {
                 arrayE[i] = new engine("no_name", 10, 100, 0, 200);
-                arrayC[i] = new cars("no_name", "no_color", 0, 0, 1000, arrayE[i]);
+                arrayC[i] = new cars("no_name", "no_color", 2020, 1000, arrayE[i]);
                 Console.WriteLine("\nМашина " + (i + 1));
                 arrayC[i].OutputCars();
             }
             Console.WriteLine("\nВвод данных:");
             for (int i = 0; i < arrayC.Length; i++)// заполнение массива
             {
-                Console.WriteLine("\nМашина " + (i + 1));
+                Console.WriteLine("\n");
                 arrayC[i].PutCars();
             }
             Console.WriteLine("\nДанные после ввода:");
             for (int i = 0; i < arrayC.Length; i++)// заполнение массива
             {
-                Console.WriteLine("\nМашина " + (i + 1));
+                Console.WriteLine("\n");
                 arrayC[i].OutputCars();
             }
             Console.WriteLine("\nПробег после тест-драйва: ");
@@ -58,23 +55,16 @@ namespace C_шарп
             {
                 int ProbegTwo;
                 arrayC[i].DriveTwo(out ProbegTwo);
-                Console.WriteLine("\nМашина " + (i + 1) + ": " + ProbegTwo + "КМ");
+                Console.WriteLine("\nМашина " + (i + 1) + ": " + ProbegTwo + "КМ");///////// получить ID через метод
             }
             Console.WriteLine("\nПосле модернизации: ");
             for (int i = 0; i < arrayC.Length; i++)
             {
                 arrayC[i].Modern(100, 200, 500);
-                Console.WriteLine("\nМашина " + (i + 1));
+                Console.WriteLine("\n");
                 arrayC[i].OutputCars();
             }
-            Console.WriteLine("\nПосле продажи: ");
-            for (int i = 0; i < arrayC.Length; i++)
-            {
-                arrayC[i].SellCars();
-                Console.WriteLine("\nМашина " + (i + 1));
-                arrayC[i].OutputCars();
-            }
-
+            Console.WriteLine("Общее количество машин: " + cars.GetCount());
             Console.ReadLine();
         }
         class engine// двигатель
@@ -201,6 +191,19 @@ namespace C_шарп
         };
         class cars
         {
+            private static int count;// статическая переменная, хранящая количество созданных объектов cars
+            static public int GetCount()
+            {
+                return count;
+            }
+            private int id;
+            public int Id// свойство класса
+            {
+                get
+                {
+                    return id;
+                }
+            }
             private string name;// марка авто
             public string Name// свойство класса
             {
@@ -237,18 +240,6 @@ namespace C_шарп
                     return year;
                 }
             }
-            private Int32 count;// количество авто
-            public Int32 Count
-            {
-                set
-                {
-                    count = value;
-                }
-                get
-                {
-                    return count;
-                }
-            }
             private Double price;// цена
             public Double Price
             {
@@ -274,22 +265,24 @@ namespace C_шарп
                 }
             }
 
-            public cars(string name, string color, Int32 yr, Int32 ct, Double pr, engine dvs)// конструктор с параметрами
+            public cars(string name, string color, Int32 yr, Double pr, engine dvs)// конструктор с параметрами
             {
                 this.name = name;
                 this.color = color;
                 this.year = yr;
-                this.count = ct;
                 this.price = pr;
                 this.dvs = dvs;//установка двигателя
+                count++;
+                id = count;
             }
             public cars()// конструктор без параметров
             {
                 name = "no_name";
                 color = "no_color";
                 year = 2000;
-                count = 0;
                 price = 0;
+                count++;
+                id = count;
             }
 
             public void PutCars()// функкция ввода данных
@@ -300,24 +293,18 @@ namespace C_шарп
                 color = Console.ReadLine();
                 Console.WriteLine("Введите год выпуска машины: ");
                 year = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Введите количество машин: ");
-                count = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Введите цену машины: ");
                 price = Convert.ToDouble(Console.ReadLine());
                 dvs.Read();
             }
             public void OutputCars()// функция вывода данных
             {
+                Console.WriteLine("ID машины: " + id);
                 Console.WriteLine("Марка машины: " + name);
                 Console.WriteLine("Цвет машины: " + color);
                 Console.WriteLine("Год выпуска машины: " + year);
-                Console.WriteLine("количество: " + count);
                 Console.WriteLine("Цена: " + price);
                 dvs.Print();
-            }
-            public void SellCars()// функция продажи авто
-            {
-                count--;
             }
             public void Drive(ref int probeg)// тест-драйв
             {

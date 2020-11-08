@@ -146,7 +146,7 @@ private:
 	double price;// цена
 	engine dvs;// двигатель
 public:
-	static int GetID()// статический метод, возвращающий значение статической переменной count
+	static int GetCount()// статический метод, возвращающий значение статической переменной count
 	{
 		return count;
 	}
@@ -339,7 +339,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	{
 		(avtoArray + i)->OutputCars();
 	}
-	cout << "Общее количество машин: " << cars::GetID() << endl;
+	cout << "Общее количество машин: " << cars::GetCount() << endl;
 	delete[] avtoArray;
 	getch();
 	return 0;
