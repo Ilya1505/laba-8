@@ -180,6 +180,7 @@ public:
 		id = count;
 	}
 	// сеттеры и геттеры
+
 	void SetName(string name)
 	{
 		this->name = name;
@@ -195,6 +196,10 @@ public:
 	void SetPrice(double price)
 	{
 		this->price = price;
+	}
+	int GetID()
+	{
+		return id;
 	}
 	string GetName()
 	{
